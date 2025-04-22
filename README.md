@@ -21,7 +21,6 @@ Before starting the project, ensure that the following tools are installed on yo
 Clone the repository to your local machine:
 ```bash
 git clone https://github.com/your-username/blog-api.git](https://github.com/leviisac/BlogApi.git
-cd blog-api
 ```
 ### 2. Run the api
 
