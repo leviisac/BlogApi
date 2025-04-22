@@ -3,15 +3,18 @@ version: '3.8'
 services:
   blogapi:
     build:
-      context: ./BlogApi 
+      context: ./BlogApi
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__MongoDb="mongodb://admin:admin123@mongo:27018"
+      - DatabaseSettings__ConnectionString=mongodb://admin:admin123@mongo:27017
+      - DatabaseSettings__DatabaseName=BlogPost
     ports:
-      - "5000:80" 
+      - "5010:8080"
     depends_on:
       - mongo
+    networks:
+      - blog_network
 
   mongo:
     image: mongo:latest
@@ -23,7 +26,13 @@ services:
       - "27018:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - blog_network
 
 volumes:
   mongo-data:
     driver: local
+
+networks:
+  blog_network:
+    driver: bridge

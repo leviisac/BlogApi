@@ -38,7 +38,7 @@ public class BlogPostController(IBlogPostService blogPostService) : ControllerBa
     /// Create a new blog post.
     /// </summary>
     [HttpPost]
-    public async Task<IActionResult> CreatePost([FromBody] BlogPostDto blogPostDto)
+    public async Task<IActionResult> CreatePost([FromBody] AddBlogPostDto blogPostDto)
     {
         var postResponse = await blogPostService.CreateAsync(blogPostDto);
         return Ok(postResponse);

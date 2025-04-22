@@ -10,8 +10,8 @@ public class MongoDbContext : IMongoDbContext
 
     public MongoDbContext(IConfiguration config)
     {
-        var client = new MongoClient(config.GetValue<string>("MongoSettings:ConnectionString"));
-        _database = client.GetDatabase(config.GetValue<string>("MongoSettings:DatabaseName"));
+        var client = new MongoClient(config.GetValue<string>("DatabaseSettings:ConnectionString"));
+        _database = client.GetDatabase(config.GetValue<string>("DatabaseSettings:DatabaseName"));
     }
 
     public IMongoCollection<T> GetCollection<T>(string name)
