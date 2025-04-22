@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  blogapi:
+    build:
+      context: ./BlogApi 
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__MongoDb="mongodb://admin:admin123@mongo:27018"
+    ports:
+      - "5000:80" 
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: blogapi-mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin123
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+    driver: local

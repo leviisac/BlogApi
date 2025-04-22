@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.8"
+services:
+  blogapi:
+    build:
+      context: "C:\\Projects\\BlogApi\\BlogApi"
+      dockerfile: "Dockerfile"
+      target: "build"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/BlogApi.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "blogapi:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\levii\\.nuget\\packages:/root/.nuget/packages"
+    - "C:\\Projects\\BlogApi\\BlogApi:/app:rw"
+    - "C:\\Projects\\BlogApi\\BlogApi:/src:rw"
+    working_dir: "/app"
